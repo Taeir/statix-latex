@@ -1,0 +1,37 @@
+\usepackage{scopegraphs/graphical}
+\usepackage{xifthen}
+
+\newcommand{\sg}{\mathcal{G}}
+\newcommand{\sgGraph}[3]{\left\langle #1 , #2 , #3 \right\rangle}
+\newcommand{\sgScopes}[1][]{\mathsf{scopes}\ifthenelse {\isempty{#1}} {} {_{#1}}}
+\newcommand{\sgNodes}[1][]{\mathsf{nodes}\ifthenelse {\isempty{#1}} {} {_{#1}}}
+\newcommand{\sgEdges}[1][]{\mathsf{edges}\ifthenelse {\isempty{#1}} {} {_{#1}}}
+\newcommand{\sgDatums}[1][]{\mathsf{\rho}\ifthenelse {\isempty{#1}} {} {_{#1}}}
+
+% universes
+\newcommand{\sgNODES}{\mathcal{V}}
+\newcommand{\sgSCOPES}{\mathcal{S}}
+\newcommand{\sgEDGES}{\mathcal{E}}
+\newcommand{\sgLABELS}{\mathcal{L}}
+
+% algebraic graph construction
+\newcommand{\sgEmpty}{\epsilon}
+\newcommand{\sgScopeSort}{\mathcal{S}}
+\newcommand{\sgEdgeSort}{\mathcal{E}}
+\newcommand{\sgLabelSort}{\mathcal{L}}
+
+% path types
+\newcommand{\sgEdge}[1][]{\xrightarrow{#1}}
+\newcommand{\sgData}[1][]{\sg@tarrow{\sg@typeedgeshape}{#1}}
+\newcommand{\sgReach}[1][]{\xreaches{#1}}
+\newcommand{\sgVis}[1][]{\xresolvesto{#1}}
+
+% paths
+\newcommand{\sgPathNil}[1]{#1}
+\newcommand{\sgPathCons}[3]{#1 \cdot #2 \cdot #3}
+
+% order on things
+\newcommand{\sgPathLt}[2]{#1 <_{p} #2}
+\newcommand{\sgPathLeq}[2]{#1 \leq_{p} #2}
+\newcommand{\sgLabelLt}{<_{l}}
+\newcommand{\sgDataLeq}{\leq_{d}}

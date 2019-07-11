@@ -1,0 +1,23 @@
+\usepackage{xifthen}
+\usepackage{stmaryrd}
+
+%% constraints
+\newcommand{\stxEqual}[2]{#1 = #2} % t == t
+\newcommand{\stxEdge}[3]{#1 \sg@tarrow{\sg@directedgeshape}{#2} #3} % t -L-> t
+\newcommand{\stxDecl}[3]{#1 \sg@tarrow{\sg@typeedgeshape}{#2} #3} % t -L-[ t ]
+\let\stxData\stxDecl
+\newcommand{\stxFresh}[1]{\nabla #1} % new t
+\newcommand{\stxQuery}[4]{\mathsf{query}\,#1 \sgVis[#2] #3\,\mathsf{as}\,#4} % query s |-RE-> MATCH as t
+\newcommand{\stxQueryVoid}[3]{\mathsf{query}\,#1 \sgVis[#2] #3} % query s |-RE-> MATCH
+\newcommand{\stxTrue}{\top} % true
+\newcommand{\stxFalse}{\bot} % false
+\newcommand{\stxExists}[2]{\exists #1 \ldotp #2} % {v_1 ... v_n} C
+\newcommand{\stxC}[2]{\mathsf{#1}(#2)} % c(t_1, ..., t_n)
+
+\newcommand{\stxWFTRUE}{\textsc{true}}
+\newcommand{\stxWFDECL}[1]{\textsc{decl}(#1)}
+\newcommand{\stxWFSCOPE}[1]{\textsc{scope}(#1)}
+\newcommand{\stxLbl}[1]{\mathsf{#1}}
+
+% judgments on programs
+\newcommand{\stOk}[1]{\vdash #1 \; \mathsf{wf}}

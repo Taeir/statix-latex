@@ -1,0 +1,39 @@
+% !TEX root = document.tex
+
+\begin{figure}[t]
+
+  \begin{boxedminipage}{\textwidth}
+    \centering
+    \begin{tikzpicture}[scopegraph]
+      % (Scope)
+      \node[scope] (s0_0) {$0$};
+      \node[draw=none, left=1.6 of s0_0.west] (TL1) {Scope};
+      
+      % (Edge)
+      \node[scope, below=0.8 of s0_0.center, anchor=center] (s1_1) {$1$};
+      \node[scope, right=1.6 of s1_1.center, anchor=center] (s0_1) {$0$};
+      \draw (s1_1) edge[lbl={P}] (s0_1);
+      \node[draw=none, left=1.6 of s1_1.west] (TL2) {Labeled edge};
+      
+      % (Declaration)
+      \node[scope, below=0.8 of s1_1.center, anchor=center] (s0_2) {$0$};
+      \node[decl, right=1.0 of s0_2.center] (D_2) {$\prgId{D}{} : \text{type}$};
+      \draw (s0_2) edge[decl, lbl={:}] (D_2);
+      \node[draw=none, left=1.6 of s0_2.west] (TL3) {Declaration};
+      
+      % (Associated scope)
+      \node[decl, below=0.8 of s0_2.center, anchor=center] (D_3) {$\prgId{D}{} : \text{type}$};
+      \node[scope, right=1.6 of D_3.center] (s0_3) {$0$};
+      \draw (D_3) edge[term] (s0_3);
+      \node[draw=none, below=0.8 of TL3.east, anchor=east] (TL4) {Associated scope};
+      
+      % (Reference)
+      \node[scope, below=0.8 of D_3.center, anchor=center] (s0_4) {$0$};
+      \node[ref, right=1.0 of s0_4.east] (R_4) {$\prgId{R}{}$};
+      \draw (R_4) edge[ref, bend left] (s0_4);
+      \node[draw=none, left=1.6 of s0_4.west] (TL5) {Reference};
+    \end{tikzpicture}
+  \end{boxedminipage}
+
+  \caption{Overview of the notation used for scope graphs.}\label{fig:statix-legend}
+\end{figure}

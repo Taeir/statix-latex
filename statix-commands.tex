@@ -1,0 +1,24 @@
+ %% Logic operators
+\newcommand{\proves}{\vdash}
+\newcommand{\satisfies}{\vDash}
+\newcommand{\entails}{\Vdash}
+\newcommand{\rulename}[1]{\text{(#1)}}
+
+%% Redefine empty set symbol
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%% Own macros
+\newcommand{\esName}[1]{\textsc{#1}\xspace}
+\newcommand{\subtype}{\mathbin{<\vcentcolon}}
+\newcommand{\prgOK}{\prgTy{ok}}
+\newcommand{\prgId}[2]{\texttt{#1}_{#2}\xspace}
+\newcommand{\prgTy}[1]{\textsc{#1}\xspace}
+\newcommand{\prgINT}{\prgTy{int}}
+\newcommand{\prgBOOL}{\prgTy{bool}}
+\newcommand{\prgINST}{\prgTy{inst}}
+\newcommand{\prgCLASS}{\prgTy{class}}
+\newcommand{\prgINTERFACE}{\prgTy{interface}}
+\newcommand{\prgPACKAGE}{\prgTy{package}}
+\newcommand{\kw}[1]{\operatorname{\texttt{#1}}}%
+\newcommand{\plhdr}[1]{\emph{\texttt{#1}}}%

@@ -1,0 +1,54 @@
+% !TEX root = document.tex
+
+\chapter{Syntax of Statix}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|p{0.3\textwidth}}
+        \textbf{Syntax} & \textbf{Logical} & \textbf{Explanation}\\
+        \hline
+        
+        \texttt{a == b} & $a == b$ & Unify the values of a and b\\
+        \hline
+        
+        \texttt{new s} & $\stxFresh{s}$ & Create a new scope\\
+        \hline
+        
+        \texttt{s1 -P-> s2} & $\stxEdge{s_1}{\stxLbl{P}}{s_2}$ & Create an edge with label $\stxLbl{P}$ from $s_1$ to $s_2$ \\
+        \hline
+        
+        \texttt{s -> Class\{x@x\}} & $\stxDecl{s}{\stxLbl{{:}}}{\prgCLASS{(x)}}$ & Create a new declaration in scope $s$ \\
+        \hline
+        
+        \texttt{!Class\{x@x\} in s} & $\stxDecl{s}{\stxLbl{{:}}}{\prgCLASS{(x)}}$ & Create a new declaration in scope $s$ \\
+        \hline
+        
+        \texttt{!type[Class\{x@x\}, ty] in s} & $\stxDecl{s}{\stxLbl{{type}}}{\prgCLASS{(x)}{:}ty}$ & Associate the given type to declaration $s$ \\
+        \hline
+        
+        \texttt{a == b} & $\stxEqual{a}{b}$ & $a$ and $b$ should be unified to be the same value \\
+        \hline
+        
+        \texttt{Class\{x@x\} in s |-> result}
+        & $\stxQuery{s}{}{\prgCLASS{(x)}}{result}$
+        & Performs a query in scope s for declarations of the form \texttt{Class\{x\}}. The allowed paths and label order have to be defined in the name-resolution section. \\
+        \hline
+        
+        % Queries
+        \begin{tabular}{@{}l@{}}
+            \texttt{query decl} \\
+            ~~~\texttt{filter P*I*} \\
+            ~~~\texttt{and \{ x \}} \\
+            ~~~\texttt{min \$ < P, P < I} \\
+            ~~~\texttt{in s |-> result}
+        \end{tabular}
+        & $\stxQuery{s}{\stxLbl{P^\ast I^\ast{:}}}{\stxWFDECL{x}}{result}$ & 
+        \begin{tabular}{@{}p{0.3\textwidth}@{}}
+        Performs a query in scope s following paths of the form $\stxLbl{P^\ast I^\ast {:}}$, with label order of preferring declarations over $\stxLbl{P}$ edges, and $\stxLbl{P}$ edges over $\stxLbl{I}$ edges.
+        \end{tabular} \\
+        
+        % Other
+    \end{tabular}
+    \caption{Overview of the syntax of Statix}
+    \label{tab:syntax_statix}
+\end{table}
